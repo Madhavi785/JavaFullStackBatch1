@@ -1,0 +1,18 @@
+package com.verizon;
+
+public class SavingAccount extends Account {
+    String proof;
+    String bname;
+    
+    void show() {
+    	deposit(3000);
+    	System.out.println(getBalance());
+    	System.out.println(acNumber +" "+balance);
+    }
+    public static void main(String args[]) {
+    	SavingAccount sa=new SavingAccount();
+    	Account a=new Account();
+    	
+    	sa.show();
+    }
+}
