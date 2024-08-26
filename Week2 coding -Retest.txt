@@ -1,0 +1,669 @@
+
+Connected to:
+Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+SQL> CREATE TABLE DEPARTMENT
+  2  (
+  3     DEPTCODE   INT(10),
+  4     DeptName   CHAR(30),
+  5     LOCATION   VARCHAR(33)
+  6  );
+   DEPTCODE   INT(10),
+                 *
+ERROR at line 3:
+ORA-00907: missing right parenthesis
+
+
+SQL> CREATE TABLE DEPARTMENT
+  2  (
+  3     DEPTCODE   NUMBER(10),
+  4     DeptName   CHAR(30),
+  5     LOCATION   VARCHAR(33)
+  6  );
+
+Table created.
+
+SQL>
+SQL> desc department;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DEPTCODE                                           NUMBER(10)
+ DEPTNAME                                           CHAR(30)
+ LOCATION                                           VARCHAR2(33)
+
+SQL> CREATE TABLE EMPLOYEE
+  2  (
+  3     EmpCode      NUMBER(4),
+  4     EmpFName     VARCHAR(15),
+  5     EmpLName     VARCHAR(15),
+  6     Job          VARCHAR(45),
+  7     Manager      CHAR(4),
+  8     HireDate     DATE,
+  9     Salary       NUMBER(6),
+ 10     Commission   NUMBER(6),
+ 11     DEPTCODE     NUMBER(2)
+ 12  );
+
+Table created.
+
+SQL>
+SQL> INSERT INTO DEPARTMENT VALUES (10, 'FINANCE', 'EDINBURGH'),
+  2                                (20,'SOFTWARE','PADDINGTON'),
+  3                                (30, 'SALES', 'MAIDSTONE'),
+  4                                (40,'MARKETING', 'DARLINGTON'),
+  5                                (50,'ADMIN', 'BIRMINGHAM');
+INSERT INTO DEPARTMENT VALUES (10, 'FINANCE', 'EDINBURGH'),
+                                                          *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL>
+SQL> INSERT INTO DEPARTMENT VALUES (10, 'FINANCE', 'EDINBURGH');
+
+1 row created.
+
+SQL>  INSERT INTO DEPARTMENT VALUES (20,'SOFTWARE','PADDINGTON');
+
+1 row created.
+
+SQL> INSERT INTO DEPARTMENT VALUES(30, 'SALES', 'MAIDSTONE');
+
+1 row created.
+
+SQL> INSERT INTO DEPARTMENT VALUES (40,'MARKETING', 'DARLINGTON');
+
+1 row created.
+
+SQL> INSERT INTO DEPARTMENT VALUES (50,'ADMIN', 'BIRMINGHAM');
+
+1 row created.
+
+SQL> SELECT * FROM DEPARTMENT;
+
+  DEPTCODE DEPTNAME                       LOCATION
+---------- ------------------------------ ---------------------------------
+        10 FINANCE                        EDINBURGH
+        20 SOFTWARE                       PADDINGTON
+        30 SALES                          MAIDSTONE
+        40 MARKETING                      DARLINGTON
+        50 ADMIN                          BIRMINGHAM
+
+SQL> INSERT INTO EMPLOYEE
+  2  VALUES (9369, 'TONY', 'STARK', 'SOFTWARE ENGINEER', 7902, '1980-12-17', 2800,0,20),
+  3
+SQL> INSERT INTO EMPLOYEE VALUES (9369, 'TONY', 'STARK', 'SOFTWARE ENGINEER', 7902, '1980-12-17', 2800,0,20);
+INSERT INTO EMPLOYEE VALUES (9369, 'TONY', 'STARK', 'SOFTWARE ENGINEER', 7902, '1980-12-17', 2800,0,20)
+                                                                               *
+ERROR at line 1:
+ORA-01861: literal does not match format string
+
+
+SQL> INSERT INTO EMPLOYEE VALUES(9369, 'TONY', 'STARK', 'SOFTWARE ENGINEER', 7902, '1980-12-17', 2800,0,20);
+INSERT INTO EMPLOYEE VALUES(9369, 'TONY', 'STARK', 'SOFTWARE ENGINEER', 7902, '1980-12-17', 2800,0,20)
+                                                                              *
+ERROR at line 1:
+ORA-01861: literal does not match format string
+
+
+SQL> INSERT INTO EMPLOYEE VALUES(9369, 'TONY', 'STARK', 'SOFTWARE ENGINEER', 7902, '17-DEC-1980', 2800,0,20);
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEE VALUES (9499, 'TIM', 'ADOLF', 'SALESMAN', 7698, '20-FEB-1981', 1600, 300,30);
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEE VALUES(9566, 'KIM', 'JARVIS', 'MANAGER', 7839, '02-MARCH-1981', 3570,0,20);
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEE VALUES(9654, 'SAM', 'MILES', 'SALESMAN', 7698, '28-SEP-1981', 1250, 1400, 30);
+
+1 row created.
+
+SQL>  INSERT INTO EMPLOYEE VALUES (9782, 'KEVIN', 'HILL', 'MANAGER', 7839, '09-JUNE-1981', 2940,0,10);
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEE VALUES (9788, 'CONNIE', 'SMITH', 'ANALYST', 7566, '09-DEC-1982', 3000,0,20);
+
+1 row created.
+
+SQL>   INSERT INTO EMPLOYEE VALUES (9839, 'ALFRED', 'KINSLEY', 'PRESIDENT', 7566, '17-NOV-1981', 5000,0, 10);
+
+1 row created.
+
+SQL>    INSERT INTO EMPLOYEE VALUES (9844, 'PAUL', 'TIMOTHY', 'SALESMAN', 7698, '08-SEP-1981', 1500,0,30);
+
+1 row created.
+
+SQL>  INSERT INTO EMPLOYEE VALUES (9876, 'JOHN', 'ASGHAR', 'SOFTWARE ENGINEER', 7788, '12-JAN-1983',3100,0,20);
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEE VALUES (9900, 'ROSE', 'SUMMERS', 'TECHNICAL LEAD', 7698, '03-DEC-1981', 2950,0, 20);
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEE VALUES (9902, 'ANDREW', 'FAULKNER', 'ANAYLYST', 7566, '03-DEC-1981', 3000,0, 10);
+
+1 row created.
+
+SQL>   2
+SQL>
+SQL>    INSERT INTO EMPLOYEE VALUES (9934, 'KAREN', 'MATTHEWS', 'SOFTWARE ENGINEER', 7782, '23-JAN-1982', 3300,0,20);
+
+1 row created.
+
+SQL>  INSERT INTO EMPLOYEE VALUES (9591, 'WENDY', 'SHAWN', 'SALESMAN', 7698, '22-FEB-1981', 500,0,30);
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEE VALUES (9698, 'BELLA', 'SWAN', 'MANAGER', 7839, '01-MAY-1981', 3420, 0,30);
+
+1 row created.
+
+SQL>  INSERT INTO EMPLOYEE VALUES (9777, 'MADII', 'HIMBURY', 'ANALYST', 7839, '01-MAY-1981', 2000, 200, NULL);
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEE VALUES (9860, 'ATHENA', 'WILSON', 'ANALYST', 7839, '21-JUNE-1992', 7000, 100, 50);
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEE VALUES (9861, 'JENNIFER', 'HUETTE', 'ANALYST', 7839, '01-JULY-1996', 5000, 100, 50);
+
+1 row created.
+
+SQL> SELECT * FROM EMPLOYEE;
+
+   EMPCODE EMPFNAME        EMPLNAME
+---------- --------------- ---------------
+JOB                                           MANA HIREDATE      SALARY
+--------------------------------------------- ---- --------- ----------
+COMMISSION   DEPTCODE
+---------- ----------
+      9369 TONY            STARK
+SOFTWARE ENGINEER                             7902 17-DEC-80       2800
+         0         20
+
+      9499 TIM             ADOLF
+SALESMAN                                      7698 20-FEB-81       1600
+       300         30
+
+   EMPCODE EMPFNAME        EMPLNAME
+---------- --------------- ---------------
+JOB                                           MANA HIREDATE      SALARY
+--------------------------------------------- ---- --------- ----------
+COMMISSION   DEPTCODE
+---------- ----------
+
+      9566 KIM             JARVIS
+MANAGER                                       7839 02-MAR-81       3570
+         0         20
+
+      9654 SAM             MILES
+SALESMAN                                      7698 28-SEP-81       1250
+
+   EMPCODE EMPFNAME        EMPLNAME
+---------- --------------- ---------------
+JOB                                           MANA HIREDATE      SALARY
+--------------------------------------------- ---- --------- ----------
+COMMISSION   DEPTCODE
+---------- ----------
+      1400         30
+
+      9782 KEVIN           HILL
+MANAGER                                       7839 09-JUN-81       2940
+         0         10
+
+      9788 CONNIE          SMITH
+
+   EMPCODE EMPFNAME        EMPLNAME
+---------- --------------- ---------------
+JOB                                           MANA HIREDATE      SALARY
+--------------------------------------------- ---- --------- ----------
+COMMISSION   DEPTCODE
+---------- ----------
+ANALYST                                       7566 09-DEC-82       3000
+         0         20
+
+      9839 ALFRED          KINSLEY
+PRESIDENT                                     7566 17-NOV-81       5000
+         0         10
+
+
+   EMPCODE EMPFNAME        EMPLNAME
+---------- --------------- ---------------
+JOB                                           MANA HIREDATE      SALARY
+--------------------------------------------- ---- --------- ----------
+COMMISSION   DEPTCODE
+---------- ----------
+      9844 PAUL            TIMOTHY
+SALESMAN                                      7698 08-SEP-81       1500
+         0         30
+
+      9876 JOHN            ASGHAR
+SOFTWARE ENGINEER                             7788 12-JAN-83       3100
+         0         20
+
+   EMPCODE EMPFNAME        EMPLNAME
+---------- --------------- ---------------
+JOB                                           MANA HIREDATE      SALARY
+--------------------------------------------- ---- --------- ----------
+COMMISSION   DEPTCODE
+---------- ----------
+
+      9900 ROSE            SUMMERS
+TECHNICAL LEAD                                7698 03-DEC-81       2950
+         0         20
+
+      9902 ANDREW          FAULKNER
+ANAYLYST                                      7566 03-DEC-81       3000
+
+   EMPCODE EMPFNAME        EMPLNAME
+---------- --------------- ---------------
+JOB                                           MANA HIREDATE      SALARY
+--------------------------------------------- ---- --------- ----------
+COMMISSION   DEPTCODE
+---------- ----------
+         0         10
+
+      9934 KAREN           MATTHEWS
+SOFTWARE ENGINEER                             7782 23-JAN-82       3300
+         0         20
+
+      9591 WENDY           SHAWN
+
+   EMPCODE EMPFNAME        EMPLNAME
+---------- --------------- ---------------
+JOB                                           MANA HIREDATE      SALARY
+--------------------------------------------- ---- --------- ----------
+COMMISSION   DEPTCODE
+---------- ----------
+SALESMAN                                      7698 22-FEB-81        500
+         0         30
+
+      9698 BELLA           SWAN
+MANAGER                                       7839 01-MAY-81       3420
+         0         30
+
+
+   EMPCODE EMPFNAME        EMPLNAME
+---------- --------------- ---------------
+JOB                                           MANA HIREDATE      SALARY
+--------------------------------------------- ---- --------- ----------
+COMMISSION   DEPTCODE
+---------- ----------
+      9777 MADII           HIMBURY
+ANALYST                                       7839 01-MAY-81       2000
+       200
+
+      9860 ATHENA          WILSON
+ANALYST                                       7839 21-JUN-92       7000
+       100         50
+
+   EMPCODE EMPFNAME        EMPLNAME
+---------- --------------- ---------------
+JOB                                           MANA HIREDATE      SALARY
+--------------------------------------------- ---- --------- ----------
+COMMISSION   DEPTCODE
+---------- ----------
+
+      9861 JENNIFER        HUETTE
+ANALYST                                       7839 01-JUL-96       5000
+       100         50
+
+
+17 rows selected.
+
+SQL> SELECT NAME FROM EMPLOYEE LIKE A%;
+SELECT NAME FROM EMPLOYEE LIKE A%
+                          *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> SELECT NAME FROM EMPLOYEE LIKE 'A%';
+SELECT NAME FROM EMPLOYEE LIKE 'A%'
+                          *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> SELECT EMPFNAME FROM EMPLOYEE LIKE 'A%';
+SELECT EMPFNAME FROM EMPLOYEE LIKE 'A%'
+                              *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> SELECT EMPLNAME FROM EMPLOYEE LIKE 'A%';
+SELECT EMPLNAME FROM EMPLOYEE LIKE 'A%'
+                              *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> SELECT employee_name.
+  2  FROM employees.
+  3  WHERE employee_name LIKE 'A%';
+FROM employees.
+*
+ERROR at line 2:
+ORA-01747: invalid user.table.column, table.column, or column specification
+
+
+SQL> SELECT empl_NAME FROM EMPLOYEE WHERE EMPLOYEE_NAME LIKE 'A%';
+SELECT empl_NAME FROM EMPLOYEE WHERE EMPLOYEE_NAME LIKE 'A%'
+                                     *
+ERROR at line 1:
+ORA-00904: "EMPLOYEE_NAME": invalid identifier
+
+
+SQL> SELECT EMPLNAME FROM EMPLOYEE WHERE EMPLOYEE_NAME LIKE 'A%';
+SELECT EMPLNAME FROM EMPLOYEE WHERE EMPLOYEE_NAME LIKE 'A%'
+                                    *
+ERROR at line 1:
+ORA-00904: "EMPLOYEE_NAME": invalid identifier
+
+
+SQL> SELECT EMPLNAME FROM EMPLOYEE WHERE EMPLNAME LIKE 'A%';
+
+EMPLNAME
+---------------
+ADOLF
+ASGHAR
+
+SQL> SELECT MAX(SALARY) FROM EMPLOYEE;
+
+MAX(SALARY)
+-----------
+       7000
+
+SQL> SELECT DEPARTMENTS FROM DEPARTMENT WHERE LOCATION='Edinburgh';
+SELECT DEPARTMENTS FROM DEPARTMENT WHERE LOCATION='Edinburgh'
+       *
+ERROR at line 1:
+ORA-00904: "DEPARTMENTS": invalid identifier
+
+
+SQL> SELECT DEPARTMENT FROM DEPARTMENT WHERE LOCATION='Edinburgh';
+SELECT DEPARTMENT FROM DEPARTMENT WHERE LOCATION='Edinburgh'
+       *
+ERROR at line 1:
+ORA-00904: "DEPARTMENT": invalid identifier
+
+
+SQL> SELECT DEPTNAME FROM DEPARTMENT WHERE LOCATION='Edinburgh';
+
+no rows selected
+
+SQL> SELECT DEPTNAME FROM DEPARTMENT WHERE LOCATION='Edinburgh';
+
+no rows selected
+
+SQL> SELECT COUNT(*) FROM EMPLOYEE;
+
+  COUNT(*)
+----------
+        17
+
+SQL> SELECT E.EMPFNAME, E.EMPLNAME,E.DEPCODE,D.DEPTNAME,D.LOCATION FROM EMPLOYEE E JOIN DEPARTMENT D ON E.DEPCODE=D.DEPCODE ORDER BY E.EMPFNAME ASC, D.LOCATION ASC;
+SELECT E.EMPFNAME, E.EMPLNAME,E.DEPCODE,D.DEPTNAME,D.LOCATION FROM EMPLOYEE E JOIN DEPARTMENT D ON E.DEPCODE=D.DEPCODE ORDER BY E.EMPFNAME ASC, D.LOCATION ASC
+                                                                                                             *
+ERROR at line 1:
+ORA-00904: "D"."DEPCODE": invalid identifier
+
+
+SQL> SELECT E.EMPFNAME, E.EMPLNAME,E.DEPCODE,D.DEPTNAME,D.LOCATION FROM EMPLOYEE E JOIN DEPARTMENT D ON E.DEPCODE=D.DEPCODE ORDER BY E.EMPFNAME ASC, D.LOCATION ASC;
+SELECT E.EMPFNAME, E.EMPLNAME,E.DEPCODE,D.DEPTNAME,D.LOCATION FROM EMPLOYEE E JOIN DEPARTMENT D ON E.DEPCODE=D.DEPCODE ORDER BY E.EMPFNAME ASC, D.LOCATION ASC
+                                                                                                             *
+ERROR at line 1:
+ORA-00904: "D"."DEPCODE": invalid identifier
+
+
+SQL> SELECT E.EMPFNAME, E.EMPLNAME,E.DEPCODE,D.DEPTNAME,D.LOCATION FROM EMPLOYEE E JOIN DEPARTMENT D ON E.DEPCODE=D.DEPCODE ORDER BY E.EMPFNAME ASC, D.LOCAT
+ION ASC;
+SELECT E.EMPFNAME, E.EMPLNAME,E.DEPCODE,D.DEPTNAME,D.LOCATION FROM EMPLOYEE E JOIN DEPARTMENT D ON E.DEPCODE=D.DEPCODE ORDER BY E.EMPFNAME ASC, D.LOCATION ASC
+                                                                                                             *
+ERROR at line 1:
+ORA-00904: "D"."DEPCODE": invalid identifier
+
+
+SQL> SELECT E.EMPFNAME, E.EMPLNAME,E.DEPCODE,D.DEPTNAME,D.LOCATION FROM EMPLOYEE E JOIN DEPARTMENT D ON E.DEPCODE=D.DEPCODE ORDER BY E.EMPFNAME ASC, D.LOCATION ASC;
+SELECT E.EMPFNAME, E.EMPLNAME,E.DEPCODE,D.DEPTNAME,D.LOCATION FROM EMPLOYEE E JOIN DEPARTMENT D ON E.DEPCODE=D.DEPCODE ORDER BY E.EMPFNAME ASC, D.LOCATION ASC
+                                                                                                             *
+ERROR at line 1:
+ORA-00904: "D"."DEPCODE": invalid identifier
+
+
+SQL> select deptName from department where deptcode in (select deptcode from employee where
+  2  /
+select deptName from department where deptcode in (select deptcode from employee where
+                                                                                     *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> select deptName from department where location='edinburgh';
+
+no rows selected
+
+SQL> select deptcode from department where location='edinburgh';
+
+no rows selected
+
+SQL> select E.EMPFNAME,E.EMPLNAME,D.DEPTCODE,D.DEPTNAME,D.LOCATION FROM EMPLOYEE E JOIN DEPARTMENT D ON E.DEPTCODE=D.DEPTCODE ORDER BY E.EMPTNAME ASC, D.LOC
+ATION ASC;
+select E.EMPFNAME,E.EMPLNAME,D.DEPTCODE,D.DEPTNAME,D.LOCATION FROM EMPLOYEE E JOIN DEPARTMENT D ON E.DEPTCODE=D.DEPTCODE ORDER BY E.EMPTNAME ASC, D.LOCATION ASC
+                                                                                                                                  *
+ERROR at line 1:
+ORA-00904: "E"."EMPTNAME": invalid identifier
+
+
+SQL> SELECT E.EMPFNAME, E.EMPLNAME,E.DEPCODE,D.DEPTNAME,D.LOCATION FROM EMPLOYEE E JOIN DEPARTMENT D ON E.DEPCODE=D.DEPCODE ORDER BY E.EMPFNAME ASC AND D.LO
+CATION ASC;
+SELECT E.EMPFNAME, E.EMPLNAME,E.DEPCODE,D.DEPTNAME,D.LOCATION FROM EMPLOYEE E JOIN DEPARTMENT D ON E.DEPCODE=D.DEPCODE ORDER BY E.EMPFNAME ASC AND D.LOCATION ASC
+                                                                                                                                               *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> SELECT E.EMPFNAME, E.EMPLNAME,E.DEPCODE,D.DEPTNAME,D.LOCATION FROM EMPLOYEE E JOIN DEPARTMENT D ON E.DEPCODE=D.DEPCODE ORDER BY E.EMPFNAME ASC;
+SELECT E.EMPFNAME, E.EMPLNAME,E.DEPCODE,D.DEPTNAME,D.LOCATION FROM EMPLOYEE E JOIN DEPARTMENT D ON E.DEPCODE=D.DEPCODE ORDER BY E.EMPFNAME ASC
+                                                                                                             *
+ERROR at line 1:
+ORA-00904: "D"."DEPCODE": invalid identifier
+
+
+SQL> SELECT E.EMPFNAME, E.EMPLNAME,E.DEPCODE,D.DEPTNAME,D.LOCATION FROM EMPLOYEE E JOIN DEPARTMENT D ON E.DEPTCODE=D.DEPTCODE ORDER BY E.EMPFNAME ASC;
+SELECT E.EMPFNAME, E.EMPLNAME,E.DEPCODE,D.DEPTNAME,D.LOCATION FROM EMPLOYEE E JOIN DEPARTMENT D ON E.DEPTCODE=D.DEPTCODE ORDER BY E.EMPFNAME ASC
+                              *
+ERROR at line 1:
+ORA-00904: "E"."DEPCODE": invalid identifier
+
+
+SQL> SELECT E.EMPFNAME, E.EMPLNAME,E.DEPTCODE,D.DEPTNAME,D.LOCATION FROM EMPLOYEE E JOIN DEPARTMENT D ON E.DEPTCODE=D.DEPTCODE ORDER BY E.EMPFNAME ASC;
+
+EMPFNAME        EMPLNAME          DEPTCODE DEPTNAME
+--------------- --------------- ---------- ------------------------------
+LOCATION
+---------------------------------
+ALFRED          KINSLEY                 10 FINANCE
+EDINBURGH
+
+ANDREW          FAULKNER                10 FINANCE
+EDINBURGH
+
+ATHENA          WILSON                  50 ADMIN
+BIRMINGHAM
+
+
+EMPFNAME        EMPLNAME          DEPTCODE DEPTNAME
+--------------- --------------- ---------- ------------------------------
+LOCATION
+---------------------------------
+BELLA           SWAN                    30 SALES
+MAIDSTONE
+
+CONNIE          SMITH                   20 SOFTWARE
+PADDINGTON
+
+JENNIFER        HUETTE                  50 ADMIN
+BIRMINGHAM
+
+
+EMPFNAME        EMPLNAME          DEPTCODE DEPTNAME
+--------------- --------------- ---------- ------------------------------
+LOCATION
+---------------------------------
+JOHN            ASGHAR                  20 SOFTWARE
+PADDINGTON
+
+KAREN           MATTHEWS                20 SOFTWARE
+PADDINGTON
+
+KEVIN           HILL                    10 FINANCE
+EDINBURGH
+
+
+EMPFNAME        EMPLNAME          DEPTCODE DEPTNAME
+--------------- --------------- ---------- ------------------------------
+LOCATION
+---------------------------------
+KIM             JARVIS                  20 SOFTWARE
+PADDINGTON
+
+PAUL            TIMOTHY                 30 SALES
+MAIDSTONE
+
+ROSE            SUMMERS                 20 SOFTWARE
+PADDINGTON
+
+
+EMPFNAME        EMPLNAME          DEPTCODE DEPTNAME
+--------------- --------------- ---------- ------------------------------
+LOCATION
+---------------------------------
+SAM             MILES                   30 SALES
+MAIDSTONE
+
+TIM             ADOLF                   30 SALES
+MAIDSTONE
+
+TONY            STARK                   20 SOFTWARE
+PADDINGTON
+
+
+EMPFNAME        EMPLNAME          DEPTCODE DEPTNAME
+--------------- --------------- ---------- ------------------------------
+LOCATION
+---------------------------------
+WENDY           SHAWN                   30 SALES
+MAIDSTONE
+
+
+16 rows selected.
+
+SQL> SELECT E.EMPFNAME, E.EMPLNAME,E.DEPTCODE,D.DEPTNAME,D.LOCATION FROM EMPLOYEE E JOIN DEPARTMENT D ON E.DEPTCODE=D.DEPTCODE ORDER BY E.EMPFNAME ASC AND D.LOCATION ASC;
+SELECT E.EMPFNAME, E.EMPLNAME,E.DEPTCODE,D.DEPTNAME,D.LOCATION FROM EMPLOYEE E JOIN DEPARTMENT D ON E.DEPTCODE=D.DEPTCODE ORDER BY E.EMPFNAME ASC AND D.LOCATION ASC
+                                                                                                                                                  *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> SELECT * FROM DEPARTMENT WHERE LOCATION='EDINBURGH';
+
+  DEPTCODE DEPTNAME                       LOCATION
+---------- ------------------------------ ---------------------------------
+        10 FINANCE                        EDINBURGH
+
+SQL> SELECT E.EMPFNAME, E.EMPLNAME,E.DEPTCODE,D.DEPTNAME,D.LOCATION FROM EMPLOYEE E JOIN DEPARTMENT D ON E.DEPTCODE=D.DEPTCODE ORDER BY E.EMPFNAME ASC, D.LO
+CATION ASC;
+
+EMPFNAME        EMPLNAME          DEPTCODE DEPTNAME
+--------------- --------------- ---------- ------------------------------
+LOCATION
+---------------------------------
+ALFRED          KINSLEY                 10 FINANCE
+EDINBURGH
+
+ANDREW          FAULKNER                10 FINANCE
+EDINBURGH
+
+ATHENA          WILSON                  50 ADMIN
+BIRMINGHAM
+
+
+EMPFNAME        EMPLNAME          DEPTCODE DEPTNAME
+--------------- --------------- ---------- ------------------------------
+LOCATION
+---------------------------------
+BELLA           SWAN                    30 SALES
+MAIDSTONE
+
+CONNIE          SMITH                   20 SOFTWARE
+PADDINGTON
+
+JENNIFER        HUETTE                  50 ADMIN
+BIRMINGHAM
+
+
+EMPFNAME        EMPLNAME          DEPTCODE DEPTNAME
+--------------- --------------- ---------- ------------------------------
+LOCATION
+---------------------------------
+JOHN            ASGHAR                  20 SOFTWARE
+PADDINGTON
+
+KAREN           MATTHEWS                20 SOFTWARE
+PADDINGTON
+
+KEVIN           HILL                    10 FINANCE
+EDINBURGH
+
+
+EMPFNAME        EMPLNAME          DEPTCODE DEPTNAME
+--------------- --------------- ---------- ------------------------------
+LOCATION
+---------------------------------
+KIM             JARVIS                  20 SOFTWARE
+PADDINGTON
+
+PAUL            TIMOTHY                 30 SALES
+MAIDSTONE
+
+ROSE            SUMMERS                 20 SOFTWARE
+PADDINGTON
+
+
+EMPFNAME        EMPLNAME          DEPTCODE DEPTNAME
+--------------- --------------- ---------- ------------------------------
+LOCATION
+---------------------------------
+SAM             MILES                   30 SALES
+MAIDSTONE
+
+TIM             ADOLF                   30 SALES
+MAIDSTONE
+
+TONY            STARK                   20 SOFTWARE
+PADDINGTON
+
+
+EMPFNAME        EMPLNAME          DEPTCODE DEPTNAME
+--------------- --------------- ---------- ------------------------------
+LOCATION
+---------------------------------
+WENDY           SHAWN                   30 SALES
+MAIDSTONE
+
+
+16 rows selected.
+
+SQL> COMMIT;
+
+Commit complete.
